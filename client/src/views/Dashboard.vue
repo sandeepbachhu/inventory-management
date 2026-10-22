@@ -754,7 +754,7 @@ export default {
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 1rem;
 }
 
@@ -810,11 +810,19 @@ export default {
   background: #10b981;
 }
 
+/* minmax(0, 1fr) stops wide tables from widening the tracks beyond the content area */
 .charts-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+/* Below the app's nav breakpoint the content is too narrow for two chart columns */
+@media (max-width: 959.98px) {
+  .charts-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .chart-card.full-width {
@@ -867,6 +875,13 @@ export default {
   min-height: 240px;
 }
 
+/* Donut and metrics need more width than a half-column provides, so stack them below ~1100px viewport width */
+@media (max-width: 1100px) {
+  .order-health-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .order-health-chart {
   display: flex;
   flex-direction: column;
@@ -876,9 +891,11 @@ export default {
   padding: 0 1rem;
 }
 
+/* max-width keeps the donut inside narrow cells; height follows the viewBox aspect ratio */
 .donut-svg-compact {
   width: 200px;
-  height: 200px;
+  max-width: 100%;
+  height: auto;
 }
 
 .donut-center-label {

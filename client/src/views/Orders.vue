@@ -251,7 +251,8 @@ export default {
   padding: 0.75rem;
   z-index: 10;
   min-width: 300px;
-  max-width: 400px;
+  /* Cap at the viewport so the popover stays on screen at phone width */
+  max-width: min(400px, calc(100vw - 2rem));
 }
 
 .item-entry {

@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
+// Global design tokens and shared primitives, loaded before the app mounts
+import './styles/tokens.css'
+import './styles/base.css'
 import Dashboard from './views/Dashboard.vue'
 import Inventory from './views/Inventory.vue'
 import Orders from './views/Orders.vue'
