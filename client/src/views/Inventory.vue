@@ -258,7 +258,8 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  min-width: 300px;
+  /* Shrinks on narrow screens so the search box never forces the row wider than the content area */
+  min-width: min(300px, 100%);
 }
 
 .search-icon {

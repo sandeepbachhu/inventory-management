@@ -97,6 +97,7 @@ const selectLanguage = (locale) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
   padding: 0.5rem 0.875rem;
   background: white;
   border: 1px solid #e2e8f0;
@@ -132,10 +133,12 @@ const selectLanguage = (locale) => {
   transform: rotate(180deg);
 }
 
+/* The switcher sits at the bottom of the sidebar, so the menu opens upward and aligns to the left edge.
+   Opening downward would push it off the bottom of the viewport. */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
   min-width: 160px;
   background: white;
   border: 1px solid #e2e8f0;

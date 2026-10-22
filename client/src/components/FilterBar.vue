@@ -101,29 +101,46 @@ export default {
 </script>
 
 <style scoped>
+/* Sticks at the top of the content area. On narrow screens the mobile top bar (App.vue) sits above it,
+   so the offset moves down by the top bar height to avoid the two overlapping. */
 .filters-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 0.75rem 0;
+  background: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
-  top: 70px;
-  z-index: 90;
+  top: 0;
+  z-index: var(--z-filterbar);
 }
 
+@media (max-width: 959.98px) {
+  .filters-bar {
+    top: var(--topbar-h);
+  }
+}
+
+/* Same max width and horizontal padding as .main-content so the filters line up with the page */
 .filters-container {
-  max-width: 1600px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: var(--space-3) var(--space-8);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
+@media (max-width: 959.98px) {
+  .filters-container {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* Filter groups wrap onto extra rows when the content area is narrow */
 .filters-grid {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-3) var(--space-4);
   flex: 1;
+  min-width: 0;
 }
 
 .filter-group {

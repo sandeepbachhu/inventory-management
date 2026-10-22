@@ -226,9 +226,10 @@ export default {
 <style scoped>
 .demand-trend-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  /* min(100%, ...) lets the cards shrink on narrow content areas instead of overflowing */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .trend-card {

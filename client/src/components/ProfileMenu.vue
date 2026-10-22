@@ -124,6 +124,7 @@ const handleLogout = () => {
   display: flex;
   align-items: center;
   gap: 0.625rem;
+  width: 100%;
   padding: 0.5rem 0.875rem;
   background: white;
   border: 1px solid #e2e8f0;
@@ -153,6 +154,12 @@ const handleLogout = () => {
 }
 
 .profile-name {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 500;
   color: #0f172a;
@@ -167,10 +174,12 @@ const handleLogout = () => {
   transform: rotate(180deg);
 }
 
+/* The menu sits at the bottom of the sidebar, so it opens upward and aligns to the left edge.
+   Opening downward would push it off the bottom of the viewport. */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
   min-width: 280px;
   background: white;
   border: 1px solid #e2e8f0;
